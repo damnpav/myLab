@@ -1,0 +1,27 @@
+https://finance.yahoo.com/quote/TRIP/history?period1=1323201600&period2=1564347600&interval=1d&filter=history&frequency=1d
+
+07/12/2011
+
+https://finance.yahoo.com/quote/PWR/history?period1=887230800&period2=1564347600&interval=1d&filter=history&frequency=1d
+
+12/02/1998
+
+https://finance.yahoo.com/quote/LB/history?period1=386456400&period2=1564347600&interval=1d&filter=history&frequency=1d
+
+01/04/1982
+
+https://finance.yahoo.com/quote/LB/history?period1=000000000&period2=1564347600&interval=1d&filter=history&frequency=1d
+
+01/01/1970
+
+надо запрашивать с нулей, нормально подгражуетс€ csv с реальной начальной датой
+
+https://query1.finance.yahoo.com/v7/finance/download/TRIP?period1=1323201600&period2=1564347600&interval=1d&events=history&crumb=SbZIb6A2F9u
+- кнопка на загрузку csv
+
+
+https://query1.finance.yahoo.com/v7/finance/download/TRIP?period1=000000000&period2=1564347600&interval=1d&events=history&crumb=SbZIb6A2F9u
+
+попробуем загружать цены csv через selenium, потому что urllib retrieve не работает - Unautharized
+
+ƒожать Selenium!
