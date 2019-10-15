@@ -25,3 +25,20 @@ https://query1.finance.yahoo.com/v7/finance/download/TRIP?period1=000000000&peri
 попробуем загружать цены csv через selenium, потому что urllib retrieve не работает - Unautharized
 
 Дожать Selenium!
+
+разбирись с этим реквестом:
+
+:authority: query1.finance.yahoo.com
+:method: GET
+:path: /v7/finance/download/PWR?period1=887230800&period2=1564347600&interval=1d&events=history&crumb=SbZIb6A2F9u
+:scheme: https
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+accept-encoding: gzip, deflate, br
+accept-language: ru-RU,ru;q=0.9,en-DE;q=0.8,en;q=0.7,en-US;q=0.6,it;q=0.5
+cookie: B=09l5hc1ehl26e; APID=UP671c2dcf-9c4f-11e9-9c6f-06927c888d3c; PRF=t%3DPWR%252BTRIP%252BLB%252BFLT%252BCB%252BJNJ%252BMSFT%252BAPI%252BMS; APIDTS=1566844764
+referer: https://finance.yahoo.com/quote/PWR/history?period1=887230800&period2=1564347600&interval=1d&filter=history&frequency=1d
+sec-fetch-mode: navigate
+sec-fetch-site: same-site
+sec-fetch-user: ?1
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
