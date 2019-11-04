@@ -31,9 +31,6 @@ def showStructure(indexLists, porog): #show structure of index
     plt.axis('equal')
     plt.show()
 
-def builtGraph:
-
-
 # spList = indComp(sp500base)
 # djList = indComp(dj)
 # nasdaqList = indComp(nasdaq)
@@ -45,10 +42,3 @@ def builtGraph:
 # showStructure(spList, 1.4)
 # showStructure(djList, 1.4)
 #showStructure(nasdaqList, 1.4)
-
-copyDates = []
-for i in range(len(dates)):
-    if i % delimiter != 0:
-        copyDates.append('')
-    else:
-        copyDates.append(dates[i])
