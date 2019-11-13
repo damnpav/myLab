@@ -12,6 +12,8 @@ rts = 'C:/Users/hcani/Documents/GitHub/myLab/rts.xlsx'
 
 import pandas as pd
 import matplotlib.pyplot as plt
+from bs4 import BeautifulSoup
+import requests
 
 def indComp(rout): # retrieve data from excel frames
     myDf = pd.read_excel(rout, "comp")
@@ -30,6 +32,21 @@ def showStructure(indexLists, porog): #show structure of index
     plt.pie(sizes, labels = labels)
     plt.axis('equal')
     plt.show()
+
+def ibexUpdater(nameOfshare):
+    ibexUrl = 'http://www.bolsamadrid.es/ing/aspx/Mercados/Precios.aspx?indice=ESI100000000' # page with market data
+    doc = requests.get(ibexUrl) # query to page
+    soup = BeautifulSoup(''.join(doc.text)) # push page to soup
+    bsResult = soup.findAll(text = True) # retrieve all text from soup
+    resultDict = {}
+    for i in range(len(bsResult)):
+        if str(bsResult[i]).find(nameOfshare) != -1:
+            resultDict['nameOfshare'] = bsResult[i]
+            resultDict['last'] = bsResult[i+1]
+            resultDict['high'] = bsResult[i+3]
+            resultDict['low'] = bsResult[i+4]
+            resultDict['volume'] = bsResult[i+5]
+    return resultDict
 
 # spList = indComp(sp500base)
 # djList = indComp(dj)
