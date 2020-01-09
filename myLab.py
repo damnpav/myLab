@@ -34,6 +34,9 @@ def showStructure(indexLists, porog): #show structure of index
     plt.show()
 
 def ibexUpdater(nameOfshare):
+    """
+    download last price of IBEX share from bolsademadrid
+    """
     ibexUrl = 'http://www.bolsamadrid.es/ing/aspx/Mercados/Precios.aspx?indice=ESI100000000' # page with market data
     doc = requests.get(ibexUrl) # query to page
     soup = BeautifulSoup(''.join(doc.text)) # push page to soup
