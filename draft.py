@@ -5,9 +5,7 @@ Created on Mon Jul 29 03:40:24 2019
 @author: hcani
 """
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+import pyodbc
 
-driver = webdriver.Firefox()
-driver.get("http://finance.yahoo.com")
-driver.close()
+connection = pyodbc.connect(DRIVER={Devart ODBC Driver for MySQL};User ID=root;Password=ADMIN12345; \
+Server=MySQL;Database=stocks;Port=33060;String Types=Unicode)
