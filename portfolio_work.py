@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+import pyodbc
 
 
 def connect_to_db():
@@ -22,18 +23,15 @@ def open_position(conn, stock, buy_date, buy_price, volume, comment):
     conn.execute(query)
 
 
+# TODO: session
 def close_position(conn, paper_id, sell_date, sell_price):
-    query = f'USE portfolios; \n ' \
-            f'START TRANSACTION; \n ' \
-            f'INSERT INTO vtb_history \n (Stock, BuyDate, BuyPrice, Volume, Comments, SellDate, SellPrice) \n ' \
-            f'SELECT Stock, BuyDate, BuyPrice, Volume, Comments, \'{sell_date}\', {sell_price} \n ' \
-            f'from vtb WHERE PaperId = {paper_id}; \n ' \
-            f'DELETE FROM vtb WHERE PaperId = {paper_id}; \n ' \
-            f'COMMIT; '
-    print(query)
+    query = f'INSERT INTO portfolios.vtb_history \n ' \
+            f'(PaperId, Stock, BuyDate, BuyPrice, Volume, Comments, SellDate, SellPrice) \n ' \
+            f'SELECT PaperId, Stock, BuyDate, BuyPrice, Volume, Comments, \'{sell_date}\', {sell_price} \n ' \
+            f'from portfolios.vtb WHERE PaperId = {paper_id}; \n '
     conn.execute(query)
-
-
+    query = f'DELETE FROM portfolios.vtb WHERE PaperId = {paper_id};'
+    conn.execute(query)
 
 
 
