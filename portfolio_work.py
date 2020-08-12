@@ -18,7 +18,7 @@ def close_connection(credentials):
 
 
 def open_position(conn, stock, buy_date, buy_price, volume, comment):
-    query = f'INSERT INTO vtb (Stock, BuyDate, BuyPrice, Volume, Comments) ' \
+    query = f'INSERT INTO portfolios.vtb (Stock, BuyDate, BuyPrice, Volume, Comments) ' \
             f'VALUES (\'{stock}\', \'{buy_date}\', {buy_price}, {volume}, \'{comment}\') '
     conn.execute(query)
 
