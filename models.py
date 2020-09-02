@@ -51,17 +51,37 @@ class Portfolio:
                                          self.stdevs[share_i] * self.stdevs[share_j] * \
                                          self.corr_coef[share_i][share_j]
 
-myPortfolio = Portfolio(['AMD', 'KO', 'SAVE'], [1, 1, 1], [1, 1, 1], [1, 1, 1])
-print(myPortfolio.stdevs)
-print(myPortfolio.corr_coef)
-
-plt.figure()
-sr = myPortfolio.share_data[('AMD', 'Close')]
-sr.plot(title='AMD prices')
-plt.show()
+# myPortfolio = Portfolio(['AMD', 'KO', 'SAVE'], [1, 1, 1], [1, 1, 1], [1, 1, 1])
+# print(myPortfolio.stdevs)
+# print(myPortfolio.corr_coef)
+#
+# plt.figure()
+# sr = myPortfolio.share_data[('AMD', 'Close')]
+# sr.plot(title='AMD prices')
+# plt.show()
 
 
 #  TODO
-# Expected Value - is just mean. You should calculate general returns of portfolio and count mean from it to take E
+# Portfolio optimisation
+
+def correlation_calc(shares):
+    share_data = yf.download(  # download Df with historical data
+                                        tickers=" ".join(shares),
+                                        period="max",
+                                        interval="1d",
+                                        group_by='ticker',
+                                        auto_adjust=True,
+                                        prepost=True,
+                                        threads=True,
+                                        proxy=None)
+    return_df = pd.DataFrame()
+    for share in shares:  # adding log return
+        share_data[(share, 'Log_ret')] = np.log(share_data[(share, 'Close')]) - \
+                                         np.log(share_data[(share, 'Close')].shift(1))
+        return_df[share] = share_data[(share, 'Log_ret')]
+    corr_coef_log_ret = return_df.corr()
+
+    print("Log_ret correlation: ")
+    print(corr_coef_log_ret)
 
 
