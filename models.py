@@ -63,8 +63,14 @@ class Portfolio:
 
 #  TODO
 # Portfolio optimisation
+# Recommendational system: too high correlation, higher\ lower than MA and so on
 
 def correlation_calc(shares):
+    """
+    Get a correlation matrix from list of tickers
+    :param shares: list with tickers
+    :return: correlation matrix
+    """
     share_data = yf.download(  # download Df with historical data
                                         tickers=" ".join(shares),
                                         period="max",
@@ -80,8 +86,27 @@ def correlation_calc(shares):
                                          np.log(share_data[(share, 'Close')].shift(1))
         return_df[share] = share_data[(share, 'Log_ret')]
     corr_coef_log_ret = return_df.corr()
+    return corr_coef_log_ret
 
-    print("Log_ret correlation: ")
-    print(corr_coef_log_ret)
+
+# TODO
+# need always to improve this search function
+def ticker_searcher(company_name):
+    """
+    Search stock ticker by its company's name
+    :param company_name: str
+    :return: found ticket: str / Not Found / dataframe with matches
+    """
+    ticker_base = pd.read_csv('secwiki_tickers.csv')
+    return_df = ticker_base.where(ticker_base['Name'].str.contains(company_name, case=False)).dropna()
+    if len(return_df) == 1:
+        return return_df['Ticker'].to_list()[0]
+    elif len(return_df) == 0:
+        return 'Not Found'
+    else:
+        return return_df
+
+
+
 
 
