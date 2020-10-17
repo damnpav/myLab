@@ -5,6 +5,10 @@ import yfinance as yf
 
 # mean-variance analysis
 # it's day-to-day model, also let's try month-to-month and year-to-year and compare results
+# TODO visualisation tool
+# TODO: set restrictions
+#  Using the Public API (without authentication), you are limited to 2,000 requests per hour per IP
+#  (or up to a total of 48,000 requests a day).
 class Portfolio:
     def __init__(self, shares, quantity, start_prices, start_dates):
         self.shares = shares            # list with share names
