@@ -24,13 +24,21 @@ class Portfolio:
         self.return_df = pd.DataFrame()
         self.stdevs = {}
         self.current_values = {}
+
         k = 0
         for share in self.shares:  # adding log return
-            self.share_data[(share, 'Log_ret')] = np.log(self.share_data[(share, 'Close')]) -\
+            if len(self.shares) == 1:
+                self.share_data['Log_ret'] = np.log(self.share_data['Close']) - \
+                                                      np.log(self.share_data['Close'].shift(1))
+                self.return_df[share] = self.share_data['Log_ret']
+                self.stdevs[share] = np.std(self.share_data['Log_ret'])
+                self.current_values[share] = self.share_data['Close'][-1] * quantity[k]
+            else:
+                self.share_data[(share, 'Log_ret')] = np.log(self.share_data[(share, 'Close')]) -\
                                                   np.log(self.share_data[(share, 'Close')].shift(1))
-            self.return_df[share] = self.share_data[(share, 'Log_ret')]
-            self.stdevs[share] = np.std(self.share_data[(share, 'Log_ret')])
-            self.current_values[share] = self.share_data[(share, 'Close')][-1] * quantity[k]
+                self.return_df[share] = self.share_data[(share, 'Log_ret')]
+                self.stdevs[share] = np.std(self.share_data[(share, 'Log_ret')])
+                self.current_values[share] = self.share_data[(share, 'Close')][-1] * quantity[k]
             k += 1
 
         self.quantity = quantity    # list with share quantity
@@ -43,7 +51,10 @@ class Portfolio:
         self.portfolio_exp_ret = 0  # expected return of portfolio
         for share in self.shares:
             self.weights[share] = self.current_values[share] / self.total_value  # calculate weights
-            self.exp_ret[share] = self.share_data[(share, 'Log_ret')].mean()
+            if len(self.shares) == 1:
+                self.exp_ret[share] = self.share_data['Log_ret'].mean()
+            else:
+                self.exp_ret[share] = self.share_data[(share, 'Log_ret')].mean()
             self.portfolio_exp_ret += self.weights[share] * self.exp_ret[share]
 
         self.corr_coef = self.return_df.corr()  # correlation matrix
@@ -110,6 +121,16 @@ def ticker_searcher(company_name):
     else:
         return return_df
 
+
+def check_ticker(ticker):
+    """
+    Check if ticker exist at SPB Exchange
+    :param ticker:
+    :return:
+    """
+    securities_df = pd.read_csv('ListingSecurityList.csv', sep=';', engine='python')
+    securities_list = securities_df['s_RTS_code'].to_list()
+    return ticker in securities_list
 
 
 
