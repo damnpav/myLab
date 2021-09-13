@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import yfinance as yf
-#from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 
 # mean-variance analysis
 # it's day-to-day model, also let's try month-to-month and year-to-year and compare results
@@ -66,6 +66,27 @@ class Portfolio:
                                          self.stdevs[share_i] * self.stdevs[share_j] * \
                                          self.corr_coef[share_i][share_j]
 
+    # TODO need to test
+    def portfolio_return(self, quantity):
+        portfolio_ret_calc = 0  # expected return of portfolio
+        weights_calc = {}
+        exp_ret_calc = {}
+        k = 0
+        for share in self.shares:
+            weights_calc[share] = quantity[k]  # calculate weights
+            portfolio_ret_calc += weights_calc[share] * self.exp_ret[share]
+            k += 1
+
+        general_variance_calc = 0
+        for share_i in self.shares:
+            for share_j in self.shares:
+                general_variance_calc += weights_calc[share_i] * weights_calc[share_j] * \
+                                         self.stdevs[share_i] * self.stdevs[share_j] * \
+                                         self.corr_coef[share_i][share_j]
+
+        return portfolio_ret_calc, general_variance_calc
+
+
 # myPortfolio = Portfolio(['AMD', 'KO', 'SAVE'], [1, 1, 1], [1, 1, 1], [1, 1, 1])
 # print(myPortfolio.stdevs)
 # print(myPortfolio.corr_coef)
@@ -119,7 +140,7 @@ def ticker_searcher(company_name):
     elif len(return_df) == 0:
         return 'Not Found'
     else:
-        return return_df
+        return return_df[['Ticker', 'Name', 'Sector', 'Industry']]
 
 
 def check_ticker(ticker):
@@ -129,7 +150,8 @@ def check_ticker(ticker):
     :return:
     """
     securities_df = pd.read_csv('ListingSecurityList.csv', sep=';', engine='python')
-    securities_list = securities_df['s_RTS_code'].to_list()
+    ticker_base = pd.read_csv('secwiki_tickers.csv')
+    securities_list = securities_df['s_RTS_code'].to_list() + ticker_base['Ticker'].to_list()
     return ticker in securities_list
 
 
