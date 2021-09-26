@@ -70,21 +70,81 @@ class Portfolio:
     def portfolio_return(self, quantity):
         portfolio_ret_calc = 0  # expected return of portfolio
         weights_calc = {}
-        exp_ret_calc = {}
+        current_values_calc = {}
         k = 0
         for share in self.shares:
-            weights_calc[share] = quantity[k]  # calculate weights
-            portfolio_ret_calc += weights_calc[share] * self.exp_ret[share]
+            current_values_calc[share] = self.share_data[(share, 'Close')][-1] * quantity[k]
             k += 1
 
+        total_val_calc = sum(current_values_calc.values())
+        k = 0
+        for share in self.shares:
+            weights_calc[share] = current_values_calc[share] / total_val_calc   # calculate weights
+            portfolio_ret_calc += weights_calc[share] * self.exp_ret[share]
+            k += 1
         general_variance_calc = 0
         for share_i in self.shares:
             for share_j in self.shares:
                 general_variance_calc += weights_calc[share_i] * weights_calc[share_j] * \
                                          self.stdevs[share_i] * self.stdevs[share_j] * \
                                          self.corr_coef[share_i][share_j]
+        return general_variance_calc / portfolio_ret_calc, general_variance_calc, portfolio_ret_calc
 
-        return portfolio_ret_calc, general_variance_calc
+    def plot_bullet(self, ret_list, var_list):
+        #TODO добавить подписи к осям
+        var_list = [x*253*100 for x in var_list]
+        ret_list = [x * 253 * 100 for x in ret_list]
+        plt.figure('Variance/ Return')
+        plt.scatter(var_list, ret_list)
+        return plt
+
+    def randomize_portfolio(self, n, portf_sum, max_share_count, max_iterates):
+        quantity_list = []
+        for i in range(n):
+            print(f'Epoche is {i}')
+            flag = False
+            share_quantity = {}
+            current_values = {}
+            total_value = 0
+            iterates = 0
+            while not flag:
+                iterates += 1
+                for share in self.shares:
+                    share_quantity[share] = np.random.randint(1, max_share_count)
+                    current_values[share] = self.share_data[(share, 'Close')][-1] * share_quantity[share]
+                total_value = sum(current_values.values())
+                if (total_value <= portf_sum and current_values not in quantity_list) or iterates > max_iterates:
+                    flag = True
+            if iterates <= max_iterates:
+                quantity_list.append(share_quantity)
+        return quantity_list
+
+    def plot_randoms(self, quantity_list):
+        rel_list = []
+        var_list = []
+        ret_list = []
+        for share in quantity_list:
+            another_tuple = self.portfolio_return(list(share.values()))
+            rel_list.append(another_tuple[0])
+            var_list.append(another_tuple[1])
+            ret_list.append(another_tuple[2])
+        bullet_plot = self.plot_bullet(ret_list, var_list)
+        rel_df = pd.DataFrame(columns=['rel_list'])
+        rel_df['rel_list'] = rel_list
+        rel_df = rel_df.sort_values(by='rel_list', ascending=True)
+        rel_df = rel_df.reset_index(drop=True)
+        rel_df = rel_df.reset_index()
+        plt.figure('Risk/Profit')
+        rel_plot = plt.scatter(rel_df['index'], rel_df['rel_list'])
+        return bullet_plot, rel_plot
+
+
+
+
+
+
+
+
 
 
 # myPortfolio = Portfolio(['AMD', 'KO', 'SAVE'], [1, 1, 1], [1, 1, 1], [1, 1, 1])
