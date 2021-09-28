@@ -1,7 +1,9 @@
+# Damir Pavlin, Moscow 2021; damirxpavlin@gmail.com
 import pandas as pd
 import numpy as np
 import yfinance as yf
 from matplotlib import pyplot as plt
+import scipy.optimize as optimize
 
 # mean-variance analysis
 # it's day-to-day model, also let's try month-to-month and year-to-year and compare results
@@ -66,7 +68,7 @@ class Portfolio:
                                          self.stdevs[share_i] * self.stdevs[share_j] * \
                                          self.corr_coef[share_i][share_j]
 
-    # TODO need to test
+
     def portfolio_return(self, quantity):
         portfolio_ret_calc = 0  # expected return of portfolio
         weights_calc = {}
@@ -90,15 +92,25 @@ class Portfolio:
                                          self.corr_coef[share_i][share_j]
         return general_variance_calc / portfolio_ret_calc, general_variance_calc, portfolio_ret_calc
 
-    def plot_bullet(self, ret_list, var_list):
-        #TODO добавить подписи к осям
+    def plot_bullet(self, ret_list, var_list, additional_dot):
         var_list = [x*253*100 for x in var_list]
         ret_list = [x * 253 * 100 for x in ret_list]
         plt.figure('Variance/ Return')
         plt.scatter(var_list, ret_list)
+
+        if additional_dot:
+            plt.scatter(additional_dot[0]*253*100, additional_dot[1]*253*100, color='red')
         return plt
 
     def randomize_portfolio(self, n, portf_sum, max_share_count, max_iterates):
+        """
+        Create list with random generated portfolios with selected papers and total summ
+        :param n: count of portfolios
+        :param portf_sum: maximum sum of papers in portfolio
+        :param max_share_count: maximum count of per share
+        :param max_iterates: maximum count of random iterates
+        :return: list of dicts presenting portfolios
+        """
         quantity_list = []
         for i in range(n):
             print(f'Epoche is {i}')
@@ -119,16 +131,29 @@ class Portfolio:
                 quantity_list.append(share_quantity)
         return quantity_list
 
-    def plot_randoms(self, quantity_list):
+    def plot_randoms(self, quantity_list, additional_portfolio):
+        """
+        Plot results of random portfolio collecting
+        :param quantity_list:
+        :return:
+        """
         rel_list = []
         var_list = []
         ret_list = []
+        risk_ret_df = pd.DataFrame(columns=['rel', 'shares'])
         for share in quantity_list:
             another_tuple = self.portfolio_return(list(share.values()))
+            risk_ret_df = risk_ret_df.append({'rel': another_tuple[0], 'shares': str(share)}, ignore_index=True)
             rel_list.append(another_tuple[0])
             var_list.append(another_tuple[1])
             ret_list.append(another_tuple[2])
-        bullet_plot = self.plot_bullet(ret_list, var_list)
+
+        if additional_portfolio:
+            another_tuple = self.portfolio_return(list(additional_portfolio.values()))
+            bullet_plot = self.plot_bullet(ret_list, var_list, [another_tuple[1], another_tuple[2]])
+        else:
+            bullet_plot = self.plot_bullet(ret_list, var_list, False)
+
         rel_df = pd.DataFrame(columns=['rel_list'])
         rel_df['rel_list'] = rel_list
         rel_df = rel_df.sort_values(by='rel_list', ascending=True)
@@ -136,18 +161,62 @@ class Portfolio:
         rel_df = rel_df.reset_index()
         plt.figure('Risk/Profit')
         rel_plot = plt.scatter(rel_df['index'], rel_df['rel_list'])
-        return bullet_plot, rel_plot
+        risk_ret_df = risk_ret_df.sort_values(by='rel', ascending=True)
+        return bullet_plot, rel_plot, risk_ret_df[:1]
+
+    def set_profit(self, profit):
+        self.profit = profit
+
+    def for_minimize(self, quantity):
+        fun_profit = self.portfolio_return(list(quantity))
+        if fun_profit[2] <= self.profit:
+            return fun_profit[1]
+        else:
+            return np.inf
+
+    def minimize_risk(self, initial_guess):
+        result = optimize.minimize(self.for_minimize, initial_guess, method='Nelder-Mead')
+        if result.success:
+            result_list = list(result.x)
+            result_list = [np.round(x, 0) for x in result_list]
+            return result_list
+        else:
+            return result.message
+
+    def add_deposit(self, percent, price):
+        self.shares.append('Depo')
+        self.share_data[('Depo', 'Close')] = ''
+        first_year = self.share_data.index[0].year
+        first_value = price
+        for index, row in self.share_data.iterrows():
+            if index.year == first_year:
+                self.share_data.loc[index, ('Depo', 'Close')] = first_value
+            else:
+                first_value = first_value * percent
+                first_year = index.year
+                self.share_data.loc[index, ('Depo', 'Close')] = first_value
+
+        self.share_data[('Depo', 'Close')] = self.share_data[('Depo', 'Close')].astype(float)
+        self.share_data[('Depo', 'Log_ret')] = np.log(self.share_data[('Depo', 'Close')]) - \
+                                               np.log(self.share_data[('Depo', 'Close')].shift(1))
+        self.return_df['Depo'] = self.share_data[('Depo', 'Log_ret')]
+        self.stdevs['Depo'] = np.std(self.share_data[('Depo', 'Log_ret')])
+        self.current_values['Depo'] = self.share_data[('Depo', 'Close')][-1]
+        self.total_value += price
+        self.weights['Depo'] = self.current_values['Depo'] / self.total_value  # calculate weights
+        self.exp_ret['Depo'] = self.share_data[('Depo', 'Log_ret')].mean()
+        self.corr_coef = self.return_df.corr()
 
 
+myPortfolio = Portfolio(['AMD', 'KO', 'SAVE'], [1, 1, 1], [1, 1, 1], [1, 1, 1])
+myPortfolio = Portfolio(['AAPL', 'BAYN.DE', 'BTI', 'CAT', 'IBM', 'INTC', 'JD', 'NOV', 'NEM', 'OGZD.IL', 'HOOD', 'SWI',
+                         'VALE'],
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+quant_list = myPortfolio.randomize_portfolio(100, 1000, 10, 1000)
+myPortfolio.plot_randoms(quant_list)
 
-
-
-
-
-
-
-
-# myPortfolio = Portfolio(['AMD', 'KO', 'SAVE'], [1, 1, 1], [1, 1, 1], [1, 1, 1])
 # print(myPortfolio.stdevs)
 # print(myPortfolio.corr_coef)
 #
