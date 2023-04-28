@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="987fc80c-5812-4782-a2b7-ffba3d9beda1" name="Default Changelist" comment="">
+    <list default="true" id="987fc80c-5812-4782-a2b7-ffba3d9beda1" name="Default Changelist" comment="refactor of old files to folders">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IBEX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/IBEX.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PWR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/PWR.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bolsaDeMadrid_draft.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/bolsaDeMadrid_draft.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csvLoader.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/csvLoader.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dowJones.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/dowJones.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draft.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/draft.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extremums_stalker.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/extremums_stalker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finance_yahoo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/finance_yahoo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functionsPool.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/functionsPool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loadData.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/loadData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myLab.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/myLab.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/portfolio_work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/rts.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selenium.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/selenium.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp500.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/sp500.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp_aapl.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/sp_aapl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/update.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +36,7 @@
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "ssh.settings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -154,6 +137,11 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+    <option name="myConnectionType" value="NONE" />
+    <option name="myConnectionId" value="" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -164,8 +152,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567452947791</updated>
-      <workItem from="1682683663123" duration="686000" />
+      <workItem from="1682683663123" duration="3132000" />
     </task>
+    <task id="LOCAL-00001" summary="refactor of old files to folders">
+      <created>1682684368708</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682684368708</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,5 +177,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor of old files to folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor of old files to folders" />
   </component>
 </project>
