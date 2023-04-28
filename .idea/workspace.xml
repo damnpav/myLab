@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="987fc80c-5812-4782-a2b7-ffba3d9beda1" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="987fc80c-5812-4782-a2b7-ffba3d9beda1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IBEX.csv" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/IBEX.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PWR.csv" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/PWR.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bolsaDeMadrid_draft.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/bolsaDeMadrid_draft.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csvLoader.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/csvLoader.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dowJones.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/dowJones.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draft.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/draft.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extremums_stalker.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/extremums_stalker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finance_yahoo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/finance_yahoo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functionsPool.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/functionsPool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loadData.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/loadData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myLab.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/myLab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/portfolio_work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rts.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/rts.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/selenium.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/selenium.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sp500.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/marketData/sp500.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sp_aapl.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/sp_aapl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/drafts/update.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,25 +37,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1QIL1COM9AnOvOWev7K4FJjxvuG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/drafts" />
+      <recent name="$PROJECT_DIR$/marketData" />
+      <recent name="$PROJECT_DIR$/notebooks" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.functionsPool">
+  <component name="RunManager" selected="Python.myLab">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="myLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -49,6 +76,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/myLab.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -70,7 +98,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draft.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/drafts/draft.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,7 +120,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/functionsPool.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/drafts/functionsPool.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,7 +142,8 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/myLab.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/drafts/myLab.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,6 +153,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -132,17 +164,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567452947791</updated>
+      <workItem from="1682683663123" duration="686000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
