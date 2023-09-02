@@ -4,6 +4,7 @@ import numpy as np
 import yfinance as yf
 from matplotlib import pyplot as plt
 import scipy.optimize as optimize
+from tqdm import tqdm
 
 # mean-variance analysis
 # it's day-to-day model, also let's try month-to-month and year-to-year and compare results
@@ -92,15 +93,49 @@ class Portfolio:
                                          self.corr_coef[share_i][share_j]
         return general_variance_calc / portfolio_ret_calc, general_variance_calc, portfolio_ret_calc
 
+    # def plot_bullet(self, ret_list, var_list, additional_dot):
+    #     var_list = [x * 253 * 100 for x in var_list]
+    #     ret_list = [x * 253 * 100 for x in ret_list]
+    #     plt.figure('Variance/ Return')
+    #     plt.scatter(var_list, ret_list)
+    #
+    #     # Adding axis labels
+    #     plt.xlabel('Variance (%)')
+    #     plt.ylabel('Return (%)')
+    #
+    #     if additional_dot:
+    #         plt.scatter(additional_dot[0] * 253 * 100, additional_dot[1] * 253 * 100, color='red')
+    #     return plt
+
+
     def plot_bullet(self, ret_list, var_list, additional_dot):
-        var_list = [x*253*100 for x in var_list]
+        var_list = [x * 253 * 100 for x in var_list]
         ret_list = [x * 253 * 100 for x in ret_list]
+
+        # Calculate the ratio of variance to return for each dot
+        ratios = [var / ret for var, ret in zip(var_list, ret_list)]
+
+        # Get the indices of the top 5 lowest ratios
+        top_indices = sorted(range(len(ratios)), key=lambda i: ratios[i])[:10]
+
         plt.figure('Variance/ Return')
-        plt.scatter(var_list, ret_list)
+
+        # Plot all dots
+        plt.scatter(var_list, ret_list, color='blue')
+
+        # Plot the top 5 dots with the lowest ratios in red
+        for i in top_indices:
+            plt.scatter(var_list[i], ret_list[i], color='red')
+
+        # Adding axis labels
+        plt.xlabel('Variance (%)')
+        plt.ylabel('Return (%)')
 
         if additional_dot:
-            plt.scatter(additional_dot[0]*253*100, additional_dot[1]*253*100, color='red')
+            plt.scatter(additional_dot[0] * 253 * 100, additional_dot[1] * 253 * 100, color='green')
+
         return plt
+
 
     def randomize_portfolio(self, n, portf_sum, max_share_count, max_iterates):
         """
@@ -112,8 +147,8 @@ class Portfolio:
         :return: list of dicts presenting portfolios
         """
         quantity_list = []
-        for i in range(n):
-            print(f'Epoche is {i}')
+        for i in tqdm(range(n)):
+            #print(f'Epoche is {i}')
             flag = False
             share_quantity = {}
             current_values = {}
@@ -143,7 +178,8 @@ class Portfolio:
         risk_ret_df = pd.DataFrame(columns=['rel', 'shares'])
         for share in quantity_list:
             another_tuple = self.portfolio_return(list(share.values()))
-            risk_ret_df = risk_ret_df.append({'rel': another_tuple[0], 'shares': str(share)}, ignore_index=True)
+            risk_ret_df = pd.concat([risk_ret_df, pd.DataFrame({'rel': [another_tuple[0]], 'shares': [str(share)]})],\
+                                    ignore_index=True)
             rel_list.append(another_tuple[0])
             var_list.append(another_tuple[1])
             ret_list.append(another_tuple[2])
@@ -162,7 +198,7 @@ class Portfolio:
         plt.figure('Risk/Profit')
         rel_plot = plt.scatter(rel_df['index'], rel_df['rel_list'])
         risk_ret_df = risk_ret_df.sort_values(by='rel', ascending=True)
-        return bullet_plot, rel_plot, risk_ret_df[:1]
+        return bullet_plot, rel_plot, risk_ret_df[:10]
 
     def set_profit(self, profit):
         self.profit = profit

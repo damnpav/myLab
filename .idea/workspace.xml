@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="987fc80c-5812-4782-a2b7-ffba3d9beda1" name="Default Changelist" comment="refactor of old files to folders">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="987fc80c-5812-4782-a2b7-ffba3d9beda1" name="Default Changelist" comment="append requirements and refresh virtual env">
+      <change afterPath="$PROJECT_DIR$/notebooks/fast_corrs.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/portfolio_solver.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/myLab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/myLab.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -22,6 +29,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="1QIL1COM9AnOvOWev7K4FJjxvuG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -34,19 +44,24 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/dp_user/PycharmProjects/myLab/notebooks",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "settings.editor.selected.configurable": "ssh.settings"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/notebooks" />
+      <recent name="$PROJECT_DIR$/drafts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/drafts" />
       <recent name="$PROJECT_DIR$/marketData" />
       <recent name="$PROJECT_DIR$/notebooks" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.myLab">
+  <component name="RunManager" selected="Python.draft">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="myLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,7 +97,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/drafts/draft.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draft.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,9 +135,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\hcani\AppData\Local\Continuum\anaconda3\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -135,6 +150,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="telega_bot" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="myLab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/telega_bot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.draft" />
+      <item itemvalue="Python.functionsPool" />
+      <item itemvalue="Python.myLab" />
+      <item itemvalue="Python.telega_bot" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -152,7 +195,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567452947791</updated>
-      <workItem from="1682683663123" duration="3132000" />
+      <workItem from="1682683663123" duration="5073000" />
+      <workItem from="1682689535654" duration="6261000" />
+      <workItem from="1682852634044" duration="44000" />
+      <workItem from="1684614849552" duration="712000" />
+      <workItem from="1684752414005" duration="337000" />
+      <workItem from="1684858213992" duration="816000" />
+      <workItem from="1685505651067" duration="1525000" />
+      <workItem from="1685531646764" duration="386000" />
+      <workItem from="1689232486759" duration="2262000" />
+      <workItem from="1689693038740" duration="618000" />
+      <workItem from="1691588799839" duration="324000" />
+      <workItem from="1693664256904" duration="2609000" />
     </task>
     <task id="LOCAL-00001" summary="refactor of old files to folders">
       <created>1682684368708</created>
@@ -161,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682684368708</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="append requirements and refresh virtual env">
+      <created>1682687197305</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682687197305</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +241,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor of old files to folders" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor of old files to folders" />
+    <MESSAGE value="append requirements and refresh virtual env" />
+    <option name="LAST_COMMIT_MESSAGE" value="append requirements and refresh virtual env" />
   </component>
 </project>
